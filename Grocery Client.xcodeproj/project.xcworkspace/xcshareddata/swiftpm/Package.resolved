@@ -1,0 +1,15 @@
+{
+  "originHash" : "1a4ecda70fe65fd6d81cf46240aba4030644c6e1f8614b06ebf8d28bfacb4df9",
+  "pins" : [
+    {
+      "identity" : "grocerydtos",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/WJCN/GroceryDTOs.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "97d77b5a55794d5b5d5271733dcc0b009b3c7f17"
+      }
+    }
+  ],
+  "version" : 3
+}
