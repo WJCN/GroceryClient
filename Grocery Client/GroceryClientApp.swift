@@ -42,6 +42,9 @@ struct GroceryClientApp: App {
 	// MARK: - Private Functions
 
 	private func checkSignedIn() {
+#if DEBUG
+		UserDefaults.standard.set(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
+#endif
 		if UserDefaults.standard.token != nil {
 			state.routes += [.signIn, .groceryCategoryList]
 		}
