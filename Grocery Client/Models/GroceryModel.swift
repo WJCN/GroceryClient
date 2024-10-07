@@ -34,10 +34,9 @@ final class GroceryModel: Sendable {
 												  groceryCategoryID: groceryCategoryID),
 			bearerToken: token
 		)
-		let deletedGroceryCategory = try await URLSession
-			.shared
-			.receive(GroceryCategoryResponseDTO.self, for: request)
-			.result
+		let (deletedGroceryCategory, _) = try await JSONDecoder().decode(
+			GroceryCategoryResponseDTO.self, from: request
+		)
 		if deleteFromModel {
 			groceryCategories.removeAll { $0.id == deletedGroceryCategory.id }
 		}
@@ -59,10 +58,9 @@ final class GroceryModel: Sendable {
 											 groceryItemID:     groceryItemID),
 			bearerToken: token
 		)
-		let deletedGroceryItem = try await URLSession
-			.shared
-			.receive(GroceryItemResponseDTO.self, for: request)
-			.result
+		let (deletedGroceryItem, _) = try await JSONDecoder().decode(
+			GroceryItemResponseDTO.self, from: request
+		)
 		if deleteFromModel {
 			groceryItems.removeAll { $0.id == deletedGroceryItem.id }
 		}
@@ -80,10 +78,9 @@ final class GroceryModel: Sendable {
 			url:        .groceryCategories.get(userID: userID),
 			bearerToken: token
 		)
-		groceryCategories = try await URLSession
-			.shared
-			.receive([GroceryCategoryResponseDTO].self, for: request)
-			.result
+		(groceryCategories, _) = try await JSONDecoder().decode(
+			[GroceryCategoryResponseDTO].self, from: request
+		)
 	}
 
 	func getGroceryItems(groceryCategoryID: UUID) async throws {
@@ -99,10 +96,9 @@ final class GroceryModel: Sendable {
 										  groceryCategoryID: groceryCategoryID),
 			bearerToken: token
 		)
-		groceryItems = try await URLSession
-			.shared
-			.receive([GroceryItemResponseDTO].self, for: request)
-			.result
+		(groceryItems, _) = try await JSONDecoder().decode(
+			[GroceryItemResponseDTO].self, from: request
+		)
 	}
 
 	func register(username: String,
@@ -114,10 +110,10 @@ final class GroceryModel: Sendable {
 			url:    .register,
 			body:    JSONEncoder().encode(usernamePassword)
 		)
-		return try await URLSession
-			.shared
-			.receive(RegisterResponseDTO.self, for: request)
-			.result
+		let (registerResponseDTO, _) = try await JSONDecoder().decode(
+			RegisterResponseDTO.self, from: request
+		)
+		return registerResponseDTO
 	}
 
 	func saveGroceryCategory(groceryCategoryRequestDTO: GroceryCategoryRequestDTO) async throws {
@@ -133,12 +129,10 @@ final class GroceryModel: Sendable {
 			bearerToken: token,
 			body:        JSONEncoder().encode(groceryCategoryRequestDTO)
 		)
-		try await groceryCategories.append(
-			URLSession
-				.shared
-				.receive(GroceryCategoryResponseDTO.self, for: request)
-				.result
+		let (groceryCategoryResponseDTO, _) = try await JSONDecoder().decode(
+			GroceryCategoryResponseDTO.self, from: request
 		)
+		groceryCategories.append(groceryCategoryResponseDTO)
 	}
 
 	func saveGroceryItem(groceryItemRequestDTO: GroceryItemRequestDTO,
@@ -156,12 +150,10 @@ final class GroceryModel: Sendable {
 			bearerToken: token,
 			body:        JSONEncoder().encode(groceryItemRequestDTO)
 		)
-		try await groceryItems.append(
-			URLSession
-				.shared
-				.receive(GroceryItemResponseDTO.self, for: request)
-				.result
+		let (groceryItemResponseDTO, _) = try await JSONDecoder().decode(
+			GroceryItemResponseDTO.self, from: request
 		)
+		groceryItems.append(groceryItemResponseDTO)
 	}
 
 	func signIn(username: String,
@@ -173,10 +165,9 @@ final class GroceryModel: Sendable {
 			url:    .signIn,
 			body:    JSONEncoder().encode(usernamePassword)
 		)
-		let signInResponseDTO = try await URLSession
-			.shared
-			.receive(SignInResponseDTO.self, for: request)
-			.result
+		let (signInResponseDTO, _) = try await JSONDecoder().decode(
+			SignInResponseDTO.self, from: request
+		)
 		if let token  = signInResponseDTO.token,
 		   let userID = signInResponseDTO.userID {
 			UserDefaults.standard.token  = token
