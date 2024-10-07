@@ -9,12 +9,12 @@ import Foundation
 
 extension StringProtocol {
 	@inlinable
-	func isEmpty(trimming characterSet: CharacterSet) -> Bool {
+	public func isEmpty(trimming characterSet: CharacterSet) -> Bool {
 		trimmingCharacters(in: characterSet).isEmpty
 	}
 
 	@inlinable
-	func trimming(_ characterSet: CharacterSet) -> String {
+	public func trimming(_ characterSet: CharacterSet) -> String {
 		trimmingCharacters(in: characterSet)
 	}
 }

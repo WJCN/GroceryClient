@@ -7,6 +7,7 @@
 
 import Foundation
 import GroceryDTOs
+import NetworkingExtensions
 import OSLog
 
 @MainActor @Observable

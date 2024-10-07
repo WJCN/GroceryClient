@@ -1,5 +1,5 @@
 {
-  "originHash" : "1a4ecda70fe65fd6d81cf46240aba4030644c6e1f8614b06ebf8d28bfacb4df9",
+  "originHash" : "377127afff969b14da3fd11c23fa0db40daed07a2fabaac6b3ddc0c6d6f85cb1",
   "pins" : [
     {
       "identity" : "grocerydtos",
@@ -8,6 +8,15 @@
       "state" : {
         "branch" : "main",
         "revision" : "39277d1d261c3b20c83d65dbdbf6ddd31cbf81e9"
+      }
+    },
+    {
+      "identity" : "networkingextensions",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/WJCN/NetworkingExtensions.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "d4618e8da8ea24c7445a234b1eb3afbd7ac15498"
       }
     }
   ],

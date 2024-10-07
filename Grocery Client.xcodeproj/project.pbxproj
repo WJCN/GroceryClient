@@ -10,6 +10,7 @@
 		B9636ED82C2B7B9800986337 /* GroceryClientApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9636ED72C2B7B9800986337 /* GroceryClientApp.swift */; };
 		B9636EDC2C2B7B9A00986337 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9636EDB2C2B7B9A00986337 /* Assets.xcassets */; };
 		B986846C2CA4A47C007A9094 /* GroceryDTOs in Frameworks */ = {isa = PBXBuildFile; productRef = B986846B2CA4A47C007A9094 /* GroceryDTOs */; };
+		B98762362CB3DF9E0056DEB2 /* NetworkingExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = B98762352CB3DF9E0056DEB2 /* NetworkingExtensions */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +36,6 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				ColorExtension.swift,
-				NetworkingExtensions.swift,
 				StringProtocolExtension.swift,
 				URLExtension.swift,
 				UserDefaultsExtension.swift,
@@ -82,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B98762362CB3DF9E0056DEB2 /* NetworkingExtensions in Frameworks */,
 				B986846C2CA4A47C007A9094 /* GroceryDTOs in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -173,6 +174,7 @@
 			mainGroup = B9636ECB2C2B7B9800986337;
 			packageReferences = (
 				B98684572CA4A27E007A9094 /* XCRemoteSwiftPackageReference "GroceryDTOs" */,
+				B98762342CB3DF9E0056DEB2 /* XCRemoteSwiftPackageReference "NetworkingExtensions" */,
 			);
 			productRefGroup = B9636ED52C2B7B9800986337 /* Products */;
 			projectDirPath = "";
@@ -419,6 +421,14 @@
 				kind = branch;
 			};
 		};
+		B98762342CB3DF9E0056DEB2 /* XCRemoteSwiftPackageReference "NetworkingExtensions" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/WJCN/NetworkingExtensions.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -426,6 +436,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B98684572CA4A27E007A9094 /* XCRemoteSwiftPackageReference "GroceryDTOs" */;
 			productName = GroceryDTOs;
+		};
+		B98762352CB3DF9E0056DEB2 /* NetworkingExtensions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B98762342CB3DF9E0056DEB2 /* XCRemoteSwiftPackageReference "NetworkingExtensions" */;
+			productName = NetworkingExtensions;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
