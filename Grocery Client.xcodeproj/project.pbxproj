@@ -35,16 +35,10 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				ColorExtension.swift,
+				NetworkingExtensions.swift,
 				StringProtocolExtension.swift,
 				URLExtension.swift,
 				UserDefaultsExtension.swift,
-			);
-			target = B9636ED32C2B7B9800986337 /* Grocery Client */;
-		};
-		B9636EF42C2BBE9E00986337 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				HTTPClient.swift,
 			);
 			target = B9636ED32C2B7B9800986337 /* Grocery Client */;
 		};
@@ -78,7 +72,6 @@
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		B9636EE52C2BACAA00986337 /* Screens */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (B9636EE82C2BACC700986337 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Screens; sourceTree = "<group>"; };
 		B9636EED2C2BB1F400986337 /* Extensions */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (B9636EF02C2BB21F00986337 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Extensions; sourceTree = "<group>"; };
-		B9636EF12C2BBE8700986337 /* Clients */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (B9636EF42C2BBE9E00986337 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Clients; sourceTree = "<group>"; };
 		B9636EFD2C2BCC5900986337 /* Models */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (B9636EFE2C2BCC6600986337 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Models; sourceTree = "<group>"; };
 		B9636F002C2BCD5500986337 /* Preview Content */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (B9636F012C2BCD6800986337 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "Preview Content"; sourceTree = "<group>"; };
 		B986851A2CA8B318007A9094 /* Views */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (B986851D2CA8B357007A9094 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Views; sourceTree = "<group>"; };
@@ -118,7 +111,6 @@
 			children = (
 				B9636ED72C2B7B9800986337 /* GroceryClientApp.swift */,
 				B9636EDB2C2B7B9A00986337 /* Assets.xcassets */,
-				B9636EF12C2BBE8700986337 /* Clients */,
 				B9636EED2C2BB1F400986337 /* Extensions */,
 				B9636EFD2C2BCC5900986337 /* Models */,
 				B9636F002C2BCD5500986337 /* Preview Content */,
