@@ -110,9 +110,9 @@ final class GroceryModel: Sendable {
 		let usernamePassword: [String: String] = ["username": username,
 												  "password": password]
 		let request = try URLRequest(
-			method:  .post,
-			url:     .register,
-			httpBody: JSONEncoder().encode(usernamePassword)
+			method: .post,
+			url:    .register,
+			body:    JSONEncoder().encode(usernamePassword)
 		)
 		return try await URLSession
 			.shared
@@ -131,7 +131,7 @@ final class GroceryModel: Sendable {
 			method:     .post,
 			url:        .groceryCategories.save(userID: userID),
 			bearerToken: token,
-			httpBody:    JSONEncoder().encode(groceryCategoryRequestDTO)
+			body:        JSONEncoder().encode(groceryCategoryRequestDTO)
 		)
 		try await groceryCategories.append(
 			URLSession
@@ -154,7 +154,7 @@ final class GroceryModel: Sendable {
 			url:        .groceryItems.save(userID:            userID,
 										   groceryCategoryID: groceryCategoryID),
 			bearerToken: token,
-			httpBody:    JSONEncoder().encode(groceryItemRequestDTO)
+			body:        JSONEncoder().encode(groceryItemRequestDTO)
 		)
 		try await groceryItems.append(
 			URLSession
@@ -169,9 +169,9 @@ final class GroceryModel: Sendable {
 		let usernamePassword: [String: String] = ["username": username,
 												  "password": password]
 		let request = try URLRequest(
-			method:  .post,
-			url:     .signIn,
-			httpBody: JSONEncoder().encode(usernamePassword)
+			method: .post,
+			url:    .signIn,
+			body:    JSONEncoder().encode(usernamePassword)
 		)
 		let signInResponseDTO = try await URLSession
 			.shared
