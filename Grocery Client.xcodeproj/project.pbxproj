@@ -94,7 +94,6 @@
 			isa = PBXGroup;
 			children = (
 				B9636ED62C2B7B9800986337 /* Grocery Client */,
-				B986846A2CA4A47C007A9094 /* Frameworks */,
 				B9636ED52C2B7B9800986337 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -119,13 +118,6 @@
 				B986851A2CA8B318007A9094 /* Views */,
 			);
 			path = "Grocery Client";
-			sourceTree = "<group>";
-		};
-		B986846A2CA4A47C007A9094 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
