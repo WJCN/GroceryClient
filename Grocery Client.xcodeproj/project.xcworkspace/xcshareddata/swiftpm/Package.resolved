@@ -7,7 +7,7 @@
       "location" : "https://github.com/WJCN/GroceryDTOs.git",
       "state" : {
         "branch" : "main",
-        "revision" : "39277d1d261c3b20c83d65dbdbf6ddd31cbf81e9"
+        "revision" : "d41448ac6971ab3791f9f13f399495b47eac4090"
       }
     },
     {
@@ -16,7 +16,7 @@
       "location" : "https://github.com/WJCN/NetworkingExtensions.git",
       "state" : {
         "branch" : "main",
-        "revision" : "a6dd707b0fccac5e51cdb2eb6218cf9ef8755885"
+        "revision" : "3d437b8c838cd8bdef6fab0d7265ade05e025fc9"
       }
     }
   ],
