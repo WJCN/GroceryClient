@@ -29,8 +29,8 @@ final class GroceryModel: Sendable {
 		}
 		let request = URLRequest(
 			method:     .delete,
-			url:        .groceryCategories.delete(userID:            userID,
-												  groceryCategoryID: groceryCategoryID),
+			url:        .grocery.categories.delete(userID:            userID,
+												   groceryCategoryID: groceryCategoryID),
 			bearerToken: token
 		)
 		let (deletedGroceryCategory, _) = try await JSONDecoder().decode(
@@ -52,9 +52,9 @@ final class GroceryModel: Sendable {
 		}
 		let request = URLRequest(
 			method:     .delete,
-			url:        .groceryItems.delete(userID:            userID,
-											 groceryCategoryID: groceryCategoryID,
-											 groceryItemID:     groceryItemID),
+			url:        .grocery.items.delete(userID:            userID,
+											  groceryCategoryID: groceryCategoryID,
+											  groceryItemID:     groceryItemID),
 			bearerToken: token
 		)
 		let (deletedGroceryItem, _) = try await JSONDecoder().decode(
@@ -74,7 +74,7 @@ final class GroceryModel: Sendable {
 		}
 		let request = URLRequest(
 			method:     .get,
-			url:        .groceryCategories.get(userID: userID),
+			url:        .grocery.categories.get(userID: userID),
 			bearerToken: token
 		)
 		(groceryCategories, _) = try await JSONDecoder().decode(
@@ -91,8 +91,8 @@ final class GroceryModel: Sendable {
 		}
 		let request = URLRequest(
 			method:     .get,
-			url:        .groceryItems.get(userID:            userID,
-										  groceryCategoryID: groceryCategoryID),
+			url:        .grocery.items.get(userID:            userID,
+										   groceryCategoryID: groceryCategoryID),
 			bearerToken: token
 		)
 		(groceryItems, _) = try await JSONDecoder().decode(
@@ -106,7 +106,7 @@ final class GroceryModel: Sendable {
 												  "password": password]
 		let request = try URLRequest(
 			method: .post,
-			url:    .register,
+			url:    .grocery.register,
 			body:    JSONEncoder().encode(usernamePassword)
 		)
 		let (registerResponseDTO, _) = try await JSONDecoder().decode(
@@ -124,7 +124,7 @@ final class GroceryModel: Sendable {
 		}
 		let request = try URLRequest(
 			method:     .post,
-			url:        .groceryCategories.save(userID: userID),
+			url:        .grocery.categories.save(userID: userID),
 			bearerToken: token,
 			body:        JSONEncoder().encode(groceryCategoryRequestDTO)
 		)
@@ -144,8 +144,8 @@ final class GroceryModel: Sendable {
 		}
 		let request = try URLRequest(
 			method:     .post,
-			url:        .groceryItems.save(userID:            userID,
-										   groceryCategoryID: groceryCategoryID),
+			url:        .grocery.items.save(userID:            userID,
+											groceryCategoryID: groceryCategoryID),
 			bearerToken: token,
 			body:        JSONEncoder().encode(groceryItemRequestDTO)
 		)
@@ -161,7 +161,7 @@ final class GroceryModel: Sendable {
 												  "password": password]
 		let request = try URLRequest(
 			method: .post,
-			url:    .signIn,
+			url:    .grocery.signIn,
 			body:    JSONEncoder().encode(usernamePassword)
 		)
 		let (signInResponseDTO, _) = try await JSONDecoder().decode(
