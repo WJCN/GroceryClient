@@ -33,8 +33,9 @@ struct AddGroceryItemScreen: View {
 
 	// MARK: - Private Stored Properties
 
-	private static let log = Logger(subsystem: String(describing: Self.self),
-									category: "")
+	private static let log = Logger(
+		subsystem: String(describing: Self.self), category: ""
+	)
 
 	@Environment(\.dismiss)         private var dismiss
 	@Environment(GroceryModel.self) private var model

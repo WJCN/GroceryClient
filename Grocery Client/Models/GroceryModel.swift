@@ -33,8 +33,8 @@ final class GroceryModel: Sendable {
 												   groceryCategoryID: groceryCategoryID),
 			bearerToken: token
 		)
-		let (deletedGroceryCategory, _) = try await JSONDecoder().decode(
-			GroceryCategoryResponseDTO.self, from: request
+		let (deletedGroceryCategory, _) = try await URLSession.shared.httpDecode(
+			GroceryCategoryResponseDTO.self, for: request
 		)
 		if deleteFromModel {
 			groceryCategories.removeAll { $0.id == deletedGroceryCategory.id }
@@ -57,8 +57,8 @@ final class GroceryModel: Sendable {
 											  groceryItemID:     groceryItemID),
 			bearerToken: token
 		)
-		let (deletedGroceryItem, _) = try await JSONDecoder().decode(
-			GroceryItemResponseDTO.self, from: request
+		let (deletedGroceryItem, _) = try await URLSession.shared.httpDecode(
+			GroceryItemResponseDTO.self, for: request
 		)
 		if deleteFromModel {
 			groceryItems.removeAll { $0.id == deletedGroceryItem.id }
@@ -77,8 +77,8 @@ final class GroceryModel: Sendable {
 			url:        .grocery.categories.get(userID: userID),
 			bearerToken: token
 		)
-		(groceryCategories, _) = try await JSONDecoder().decode(
-			[GroceryCategoryResponseDTO].self, from: request
+		(groceryCategories, _) = try await URLSession.shared.httpDecode(
+			[GroceryCategoryResponseDTO].self, for: request
 		)
 	}
 
@@ -95,8 +95,8 @@ final class GroceryModel: Sendable {
 										   groceryCategoryID: groceryCategoryID),
 			bearerToken: token
 		)
-		(groceryItems, _) = try await JSONDecoder().decode(
-			[GroceryItemResponseDTO].self, from: request
+		(groceryItems, _) = try await URLSession.shared.httpDecode(
+			[GroceryItemResponseDTO].self, for: request
 		)
 	}
 
@@ -109,8 +109,8 @@ final class GroceryModel: Sendable {
 			url:    .grocery.register,
 			body:    JSONEncoder().encode(usernamePassword)
 		)
-		let (registerResponseDTO, _) = try await JSONDecoder().decode(
-			RegisterResponseDTO.self, from: request
+		let (registerResponseDTO, _) = try await URLSession.shared.httpDecode(
+			RegisterResponseDTO.self, for: request
 		)
 		return registerResponseDTO
 	}
@@ -128,8 +128,8 @@ final class GroceryModel: Sendable {
 			bearerToken: token,
 			body:        JSONEncoder().encode(groceryCategoryRequestDTO)
 		)
-		let (groceryCategoryResponseDTO, _) = try await JSONDecoder().decode(
-			GroceryCategoryResponseDTO.self, from: request
+		let (groceryCategoryResponseDTO, _) = try await URLSession.shared.httpDecode(
+			GroceryCategoryResponseDTO.self, for: request
 		)
 		groceryCategories.append(groceryCategoryResponseDTO)
 	}
@@ -149,8 +149,8 @@ final class GroceryModel: Sendable {
 			bearerToken: token,
 			body:        JSONEncoder().encode(groceryItemRequestDTO)
 		)
-		let (groceryItemResponseDTO, _) = try await JSONDecoder().decode(
-			GroceryItemResponseDTO.self, from: request
+		let (groceryItemResponseDTO, _) = try await URLSession.shared.httpDecode(
+			GroceryItemResponseDTO.self, for: request
 		)
 		groceryItems.append(groceryItemResponseDTO)
 	}
@@ -164,8 +164,8 @@ final class GroceryModel: Sendable {
 			url:    .grocery.signIn,
 			body:    JSONEncoder().encode(usernamePassword)
 		)
-		let (signInResponseDTO, _) = try await JSONDecoder().decode(
-			SignInResponseDTO.self, from: request
+		let (signInResponseDTO, _) = try await URLSession.shared.httpDecode(
+			SignInResponseDTO.self, for: request
 		)
 		if let token  = signInResponseDTO.token,
 		   let userID = signInResponseDTO.userID {
@@ -182,6 +182,7 @@ final class GroceryModel: Sendable {
 
 	// MARK: - Private Stored Properties
 
-	private static let log = Logger(subsystem: String(describing: GroceryModel.self),
-									category: "")
+	private static let log = Logger(
+		subsystem: String(describing: GroceryModel.self), category: ""
+	)
 }

@@ -41,8 +41,9 @@ struct GroceryCategoryDetailScreen: View {
 
 	// MARK: - Private Stored Properties
 
-	private static let log = Logger(subsystem: String(describing: Self.self),
-									category: "")
+	private static let log = Logger(
+		subsystem: String(describing: Self.self), category: ""
+	)
 
 	@Environment(GroceryModel.self) private var model
 
