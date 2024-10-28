@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/WJCN/NetworkingExtensions.git",
       "state" : {
-        "revision" : "4d03c45ae4b2ac281e6bfd46ac4a1d212001cb90",
-        "version" : "1.0.4"
+        "revision" : "d1781bf17d947c2d4f329ee609462e9cc44b279e",
+        "version" : "1.0.7"
       }
     }
   ],
