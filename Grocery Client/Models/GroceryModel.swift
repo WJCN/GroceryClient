@@ -27,14 +27,16 @@ final class GroceryModel: Sendable {
 			Self.log.error("No user is logged in.")
 			return
 		}
-		let request = try URLRequest(
+		let request = URLRequest(
 			method:     .delete,
-			bearerToken: token,
 			url:        .grocery.categories.delete(userID:            userID,
-												   groceryCategoryID: groceryCategoryID)
+												   groceryCategoryID: groceryCategoryID),
+			bearerToken: token,
+			contentType: nil
 		)
-		let (deletedGroceryCategory, _) = try await URLSession.shared.httpDecode(
-			GroceryCategoryResponseDTO.self, for: request
+		let (data, _) = try await URLSession.shared.httpData(for: request)
+		let deletedGroceryCategory = try JSONDecoder().decode(
+			GroceryCategoryResponseDTO.self, from: data
 		)
 		if deleteFromModel {
 			groceryCategories.removeAll { $0.id == deletedGroceryCategory.id }
@@ -50,15 +52,17 @@ final class GroceryModel: Sendable {
 			Self.log.error("No user is logged in.")
 			return
 		}
-		let request = try URLRequest(
+		let request = URLRequest(
 			method:     .delete,
-			bearerToken: token,
 			url:        .grocery.items.delete(userID:            userID,
 											  groceryCategoryID: groceryCategoryID,
-											  groceryItemID:     groceryItemID)
+											  groceryItemID:     groceryItemID),
+			bearerToken: token,
+			contentType: nil
 		)
-		let (deletedGroceryItem, _) = try await URLSession.shared.httpDecode(
-			GroceryItemResponseDTO.self, for: request
+		let (data, _) = try await URLSession.shared.httpData(for: request)
+		let deletedGroceryItem = try JSONDecoder().decode(
+			GroceryItemResponseDTO.self, from: data
 		)
 		if deleteFromModel {
 			groceryItems.removeAll { $0.id == deletedGroceryItem.id }
@@ -72,13 +76,15 @@ final class GroceryModel: Sendable {
 			Self.log.error("No user is logged in.")
 			return
 		}
-		let request = try URLRequest(
+		let request = URLRequest(
 			method:     .get,
+			url:        .grocery.categories.get(userID: userID),
 			bearerToken: token,
-			url:        .grocery.categories.get(userID: userID)
+			contentType: nil
 		)
-		(groceryCategories, _) = try await URLSession.shared.httpDecode(
-			[GroceryCategoryResponseDTO].self, for: request
+		let (data, _) = try await URLSession.shared.httpData(for: request)
+		groceryCategories = try JSONDecoder().decode(
+			[GroceryCategoryResponseDTO].self, from: data
 		)
 	}
 
@@ -89,14 +95,16 @@ final class GroceryModel: Sendable {
 			Self.log.error("No user is logged in.")
 			return
 		}
-		let request = try URLRequest(
+		let request = URLRequest(
 			method:     .get,
-			bearerToken: token,
 			url:        .grocery.items.get(userID:            userID,
-										   groceryCategoryID: groceryCategoryID)
+										   groceryCategoryID: groceryCategoryID),
+			bearerToken: token,
+			contentType: nil
 		)
-		(groceryItems, _) = try await URLSession.shared.httpDecode(
-			[GroceryItemResponseDTO].self, for: request
+		let (data, _) = try await URLSession.shared.httpData(for: request)
+		groceryItems = try JSONDecoder().decode(
+			[GroceryItemResponseDTO].self, from: data
 		)
 	}
 
@@ -106,12 +114,13 @@ final class GroceryModel: Sendable {
 												  "password": password]
 		let request = try URLRequest(
 			method:     .post,
-			bearerToken: nil,
 			url:        .grocery.register,
+			bearerToken: nil,
 			body:        usernamePassword
 		)
-		let (registerResponseDTO, _) = try await URLSession.shared.httpDecode(
-			RegisterResponseDTO.self, for: request
+		let (data, _) = try await URLSession.shared.httpData(for: request)
+		let registerResponseDTO = try JSONDecoder().decode(
+			RegisterResponseDTO.self, from: data
 		)
 		return registerResponseDTO
 	}
@@ -125,12 +134,13 @@ final class GroceryModel: Sendable {
 		}
 		let request = try URLRequest(
 			method:     .post,
-			bearerToken: token,
 			url:        .grocery.categories.save(userID: userID),
+			bearerToken: token,
 			body:        groceryCategoryRequestDTO
 		)
-		let (groceryCategoryResponseDTO, _) = try await URLSession.shared.httpDecode(
-			GroceryCategoryResponseDTO.self, for: request
+		let (data, _) = try await URLSession.shared.httpData(for: request)
+		let groceryCategoryResponseDTO = try JSONDecoder().decode(
+			GroceryCategoryResponseDTO.self, from: data
 		)
 		groceryCategories.append(groceryCategoryResponseDTO)
 	}
@@ -145,13 +155,14 @@ final class GroceryModel: Sendable {
 		}
 		let request = try URLRequest(
 			method:     .post,
-			bearerToken: token,
 			url:        .grocery.items.save(userID:            userID,
 											groceryCategoryID: groceryCategoryID),
+			bearerToken: token,
 			body:        groceryItemRequestDTO
 		)
-		let (groceryItemResponseDTO, _) = try await URLSession.shared.httpDecode(
-			GroceryItemResponseDTO.self, for: request
+		let (data, _) = try await URLSession.shared.httpData(for: request)
+		let groceryItemResponseDTO = try JSONDecoder().decode(
+			GroceryItemResponseDTO.self, from: data
 		)
 		groceryItems.append(groceryItemResponseDTO)
 	}
@@ -162,12 +173,13 @@ final class GroceryModel: Sendable {
 												  "password": password]
 		let request = try URLRequest(
 			method:     .post,
-			bearerToken: nil,
 			url:        .grocery.signIn,
+			bearerToken: nil,
 			body:        usernamePassword
 		)
-		let (signInResponseDTO, _) = try await URLSession.shared.httpDecode(
-			SignInResponseDTO.self, for: request
+		let (data, _) = try await URLSession.shared.httpData(for: request)
+		let signInResponseDTO = try JSONDecoder().decode(
+			SignInResponseDTO.self, from: data
 		)
 		if let token  = signInResponseDTO.token,
 		   let userID = signInResponseDTO.userID {
