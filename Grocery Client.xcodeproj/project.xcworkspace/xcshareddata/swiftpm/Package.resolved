@@ -15,8 +15,17 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/WJCN/NetworkingExtensions.git",
       "state" : {
-        "revision" : "8dbcc1ce5163ece1e288aae91e837005d0b2468a",
-        "version" : "1.0.22"
+        "revision" : "cda4763c99b3a608177aca8d504c4a397f836140",
+        "version" : "1.0.25"
+      }
+    },
+    {
+      "identity" : "swift-http-types",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-http-types",
+      "state" : {
+        "revision" : "ef18d829e8b92d731ad27bb81583edd2094d1ce3",
+        "version" : "1.3.1"
       }
     }
   ],
